@@ -4,9 +4,13 @@
 
 # Top secret stuff!
 /link/.ssh/authorized_keys
+/link/.ssh/config
 /link/.ssh/id_*
 /link/.ssh/*.pem
 /link/.ssh/known_hosts
+/link/.vim/sessions
+/link/.vim/tmp
+/link/.vim/undo
 
 # Don't commit Vim plugins, vim-plug will install them.
 /link/.vim/plugged

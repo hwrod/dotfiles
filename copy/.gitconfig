@@ -1,59 +1,81 @@
 [user]
-  name = Ben Alman
-  email = EMAIL
-[core]
-  autocrlf = input
-  whitespace = fix,space-before-tab,tab-in-indent,trailing-space
-  excludesfile = ~/.gitignore_global
-[apply]
-  whitespace = fix
+	name = Harold Rodriguez
+	email = harold@planetharold.com
+[credential]
+	helper = osxkeychain
 [alias]
-  br = branch
-  ci = commit
-  co = checkout
-  df = diff
-  g = grep -I
-  lg = log -p
-  pp = !"echo 'Pull'; git pull; echo 'Push'; git push"
-  rb = rbranch
-  rv = review
-  st = status
-  ksdiff = difftool -y -t Kaleidoscope
-[branch "master"]
-  remote = origin
-  merge = refs/heads/master
-[color]
-  ui = auto
+    ahh = "merge --abort"
+    amend = "!f() { git commit --amend --no-edit; }; f"
+    amendall = "!f() { git add -A; git commit --amend --no-edit; }; f"
+    b = branch
+    bubble = "!f(){ git co development;git merge harold;git co staging;git merge dev;git co master;git merge staging;git co harold; };f"
+    c = !clear
+    ci = commit
+    co = checkout
+    d = diff -w --word-diff --color-words
+    g = grep -I
+    ksdiff = difftool -y -t Kaleidoscope
+    lg = log --oneline --decorate --graph --no-merges
+    lgall = log --oneline --decorate --graph --no-merges --all
+    lgplain = log --pretty=format:%h%x09%an%x09%ad%x09%s --date=short --no-merges
+    myh = log --pretty=format:%h%x09%an%x09%ad%x09%s --date=short --author=Harold
+    pokemodules = "submodule foreach --recursive git fetch"
+    rb = rbranch
+    rv = review
+    s = status
+    w = diff -w --word-diff --color-words platform/apps/src
+    #w = diff -w --word-diff --color-words src
+[color "diff"]
+	ui = true
+    frag = magenta bold
+    meta = yellow bold
+    #new = green bold
+    new = white bold black reverse
+    #old = red bold
+    old = red bold
+    whitespace = blue reverse
 [color "branch"]
   current = yellow reverse
   local = yellow
   remote = green
-[color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
 [color "status"]
-  added = yellow
-  changed = green
+  added = green
+  changed = yellow
   untracked = cyan
+[push]
+	default = matching
+[core]
+	pager = less -r
+    autocrlf = input
+    whitespace = fix,space-before-tab,tab-in-indent,trailing-space
+    excludesfile = ~/.gitignore_global
 [merge]
-  log = true
+	conflictstyle = diff3
+	ff = false
+
+[apply]
+    whitespace = fix
+[branch "master"]
+    remote = origin
+    merge = refs/heads/master
+[merge]
+    log = true
 [difftool "Kaleidoscope"]
-  cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+    cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
 [rerere]
-  enabled = 1
+    enabled = 1
 [url "git@github.com:"]
-  insteadOf = "gh:"
-  pushInsteadOf = "github:"
-  pushInsteadOf = "git://github.com/"
+    insteadOf = "gh:"
+    pushInsteadOf = "github:"
+    pushInsteadOf = "git://github.com/"
 [url "git://github.com/"]
-  insteadOf = "github:"
+    insteadOf = "github:"
 [url "git@gist.github.com:"]
-  insteadOf = "gst:"
-  pushInsteadOf = "gist:"
-  pushInsteadOf = "git://gist.github.com/"
+    insteadOf = "gst:"
+    pushInsteadOf = "gist:"
+    pushInsteadOf = "git://gist.github.com/"
 [url "git://gist.github.com/"]
-  insteadOf = "gist:"
+    insteadOf = "gist:"
 [url "git@heroku.com:"]
-  insteadOf = "heroku:"
+    insteadOf = "heroku:"
+
